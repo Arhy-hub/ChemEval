@@ -1,0 +1,288 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [7 0 R 9 0 R 11 0 R 13 0 R] /Count 4 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier /Encoding /WinAnsiEncoding >>
+endobj
+6 0 obj
+<< /Length 6875 >>
+stream
+q 0.070 0.100 0.160 rg 40.0 742.0 532.0 34.0 re f Q
+BT /F2 8.5 Tf 0.220 0.740 0.970 rg 52.0 761.0 Td (AGENTVERSE 2026  |  BIOTECH HIT-TO-LEAD TECHNICAL EXPLANATION) Tj ET
+BT /F2 11.5 Tf 0.980 0.980 0.990 rg 52.0 749.0 Td (1. Executive Summary & 4-Stage System Architecture) Tj ET
+BT /F1 9.0 Tf 0.750 0.800 0.880 rg 505.0 755.0 Td (Page 1 of 4) Tj ET
+q 0.820 0.850 0.900 rg 40.0 32.0 532.0 1.0 re f Q
+BT /F1 8.0 Tf 0.420 0.460 0.520 rg 40.0 20.0 Td (Autonomous Hit-to-Lead Medicinal Chemistry Triage Agent  |  Gemini Argon + RDKit 8-Gate Clinical Screening) Tj ET
+q 0.920 0.950 0.990 rg 40.0 708.0 532.0 20.0 re f Q
+q 0.150 0.390 0.920 rg 40.0 708.0 4.0 20.0 re f Q
+BT /F2 10.5 Tf 0.070 0.160 0.360 rg 50.0 714.0 Td (1.1 Executive Summary: What Problem Does This Agent Solve?) Tj ET
+BT /F1 9.3 Tf 0.150 0.190 0.260 rg 44.0 694.0 Td (In early-stage drug discovery \(Hit-to-Lead\), high-throughput screening \(HTS\) identifies 'hit') Tj ET
+BT /F1 9.3 Tf 0.150 0.190 0.260 rg 44.0 681.2 Td (molecules that bind a disease protein target \(such as EGFR in non-small cell lung cancer, BCR-) Tj ET
+BT /F1 9.3 Tf 0.150 0.190 0.260 rg 44.0 668.4 Td (ABL in leukemia, or BACE1 in Alzheimer's disease\). However, over 85% of raw hits cannot) Tj ET
+BT /F1 9.3 Tf 0.150 0.190 0.260 rg 44.0 655.6 Td (advance to clinical trials because they suffer from severe ADMET liabilities: fatal hERG) Tj ET
+BT /F1 9.3 Tf 0.150 0.190 0.260 rg 44.0 642.8 Td (potassium-channel cardiotoxicity, poor water solubility \(LogS <= -5.0\), excessive molecular) Tj ET
+BT /F1 9.3 Tf 0.150 0.190 0.260 rg 44.0 630.0 Td (weight \(>500 Da\), or reactive/mutagenic functional groups \(unmasked anilines, nitro groups,) Tj ET
+BT /F1 9.3 Tf 0.150 0.190 0.260 rg 44.0 617.2 Td (Michael acceptors\).) Tj ET
+BT /F1 9.3 Tf 0.150 0.190 0.260 rg 44.0 601.9 Td (Standard generative AI approaches often fail in medicinal chemistry because they \(1\)) Tj ET
+BT /F1 9.3 Tf 0.150 0.190 0.260 rg 44.0 589.1 Td (hallucinate chemically invalid SMILES strings with broken valences, \(2\) destroy the core) Tj ET
+BT /F1 9.3 Tf 0.150 0.190 0.260 rg 44.0 576.3 Td (Murcko ring scaffold required for target binding, \(3\) modify compounds that are already) Tj ET
+BT /F1 9.3 Tf 0.150 0.190 0.260 rg 44.0 563.5 Td (clinically clean, or \(4\) approve molecules that still fail critical clinical gates. Our) Tj ET
+BT /F1 9.3 Tf 0.150 0.190 0.260 rg 44.0 550.7 Td (Autonomous Hit-to-Lead Triage Agent solves all four failure modes through a deterministic) Tj ET
+BT /F1 9.3 Tf 0.150 0.190 0.260 rg 44.0 537.9 Td (Design-Build-Test-Learn \(DBTL\) architecture.) Tj ET
+q 0.920 0.950 0.990 rg 40.0 510.6 532.0 20.0 re f Q
+q 0.150 0.390 0.920 rg 40.0 510.6 4.0 20.0 re f Q
+BT /F2 10.5 Tf 0.070 0.160 0.360 rg 50.0 516.6 Td (1.2 End-to-End 4-Stage Architecture) Tj ET
+BT /F2 9.4 Tf 0.080 0.180 0.380 rg 46.0 496.6 Td (* Stage 1 -- Universal Compound Recognition & Baseline Diagnosis:) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 484.1 Td (Accepts any Drug Name \(e.g., Ponatinib, Imatinib, Terfenadine, Aspirin, Caffeine\), ChEMBL) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 472.1 Td (ID \(e.g., CHEMBL25\), or raw SMILES string. Resolves structures via a curated fast lookup) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 460.1 Td (plus live ChEMBL v33 REST and PubChem PUG-REST APIs. Immediately runs the 8 deterministic) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 448.1 Td (clinical gates: if a molecule already passes 8/8 checks \(e.g., Caffeine\), the agent halts) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 436.1 Td (on Cycle 0 without making unnecessary modifications.) Tj ET
+BT /F2 9.4 Tf 0.080 0.180 0.380 rg 46.0 421.1 Td (* Stage 2 -- Gemini Argon + RDKit [cD2] SMIRKS Multi-Step DBTL Search \(10 Candidate Analogs\):) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 408.6 Td (When one or more gates fail, Gemini Argon diagnoses the exact failing gates, locks the) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 396.6 Td (Murcko binding scaffold \(Tanimoto >= 0.550\), and searches over a library of medicinal) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 384.6 Td (chemistry reaction SMIRKS. The engine generates and evaluates up to Max Optimization) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 372.6 Td (Cycles \(default 10\) distinct candidate compounds, including intermediate fixes, rejected) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 360.6 Td (branches that trigger automated backtracking, and peripheral bioisostere scans.) Tj ET
+BT /F2 9.4 Tf 0.080 0.180 0.380 rg 46.0 345.6 Td (* Stage 3 -- Deterministic 8-Gate Clinical Scorecard & Chemical Validity Proof:) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 333.1 Td (Every candidate compound is scored deterministically by RDKit \(zero hallucinated metrics\)) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 321.1 Td (and accompanied by a 5-point Chemical Validity Proof: Sanitize/Kekulize status \(0 valence) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 309.1 Td (errors, 0 radicals\), Hill Molecular Formula, Exact Monoisotopic MW, IUPAC Standard) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 297.1 Td (InChIKey, and a 1-click 'Verify as New Input' button that re-evaluates the generated) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 285.1 Td (SMILES independently from scratch.) Tj ET
+BT /F2 9.4 Tf 0.080 0.180 0.380 rg 46.0 270.1 Td (* Stage 4 -- Dual-Use Biosecurity Screen, Hard <8/8 Interlock & Mandatory Human Sign-Off:) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 257.6 Td (Renders side-by-side 2D RDKit SVGs highlighting the preserved Murcko core \(Blue\), modified) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 245.6 Td (R-groups/heteroatoms \(Green\), and eliminated toxicophores \(Red\). Screens against dual-use) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 233.6 Td (toxin SMARTS patterns and enforces a hard clinical interlock: if a candidate achieves <8/8) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 221.6 Td (gates, sign-off and export are locked both in the UI and via an HTTP 400 backend check.) Tj ET
+q 0.920 0.950 0.990 rg 40.0 194.6 532.0 20.0 re f Q
+q 0.150 0.390 0.920 rg 40.0 194.6 4.0 20.0 re f Q
+BT /F2 10.5 Tf 0.070 0.160 0.360 rg 50.0 200.6 Td (1.3 Data Sources & Open-Source Licensing) Tj ET
+BT /F2 8.6 Tf 0.100 0.350 0.250 rg 46.0 180.6 Td (ChEMBL Database v33:) Tj ET
+BT /F3 8.0 Tf 0.120 0.160 0.220 rg 206.0 180.6 Td (CC-BY-SA 3.0 License -- Target metadata & bioactivity structures \(EBI\)) Tj ET
+BT /F2 8.6 Tf 0.100 0.350 0.250 rg 46.0 167.8 Td (RDKit Cheminformatics:) Tj ET
+BT /F3 8.0 Tf 0.120 0.160 0.220 rg 206.0 167.8 Td (BSD-3-Clause License -- Sanitization, SMIRKS reactions, ECFP4, 8-gate QSAR) Tj ET
+BT /F2 8.6 Tf 0.100 0.350 0.250 rg 46.0 155.0 Td (PubChem PUG-REST API:) Tj ET
+BT /F3 8.0 Tf 0.120 0.160 0.220 rg 206.0 155.0 Td (Public Domain \(NCBI\) -- Live drug-name-to-SMILES & InChIKey verification) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 6 0 R >>
+endobj
+8 0 obj
+<< /Length 7025 >>
+stream
+q 0.070 0.100 0.160 rg 40.0 742.0 532.0 34.0 re f Q
+BT /F2 8.5 Tf 0.220 0.740 0.970 rg 52.0 761.0 Td (AGENTVERSE 2026  |  BIOTECH HIT-TO-LEAD TECHNICAL EXPLANATION) Tj ET
+BT /F2 11.5 Tf 0.980 0.980 0.990 rg 52.0 749.0 Td (2. The 8 Deterministic Clinical Gates & Chemical Validity Proof) Tj ET
+BT /F1 9.0 Tf 0.750 0.800 0.880 rg 505.0 755.0 Td (Page 2 of 4) Tj ET
+q 0.820 0.850 0.900 rg 40.0 32.0 532.0 1.0 re f Q
+BT /F1 8.0 Tf 0.420 0.460 0.520 rg 40.0 20.0 Td (Autonomous Hit-to-Lead Medicinal Chemistry Triage Agent  |  Gemini Argon + RDKit 8-Gate Clinical Screening) Tj ET
+q 0.920 0.950 0.990 rg 40.0 708.0 532.0 20.0 re f Q
+q 0.150 0.390 0.920 rg 40.0 708.0 4.0 20.0 re f Q
+BT /F2 10.5 Tf 0.070 0.160 0.360 rg 50.0 714.0 Td (2.1 Exact Specification of All 8 Clinical Screening Gates) Tj ET
+BT /F2 9.4 Tf 0.080 0.180 0.380 rg 46.0 694.0 Td (* Gate 1 -- Chemical Validity \(Threshold: Clean RDKit SanitizeMol & Kekulize\):) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 681.5 Td (Executes Chem.MolFromSmiles\(\) followed by full Chem.SanitizeMol\(\) \(valence check,) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 669.5 Td (aromaticity perception, Kekulization, and hybridization\). Verifies 0 radical electrons) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 657.5 Td (\(Descriptors.NumRadicalElectrons == 0\).) Tj ET
+BT /F2 9.4 Tf 0.080 0.180 0.380 rg 46.0 642.5 Td (* Gate 2 -- Scaffold Integrity / Core Shape Kept \(Threshold: Tanimoto >= 0.550 & Core Rings Intact\):) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 630.0 Td (Computes 2048-bit Morgan ECFP4 \(radius 2\) fingerprints for the whole molecule \(70% weight\)) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 618.0 Td (and the Bemis-Murcko core scaffold \(30% weight\), and verifies that the Murcko ring count) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 606.0 Td (is preserved \(cur_rings >= max\(1, ref_rings - 1\)\). Displayed and compared at exact) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 594.0 Td (3-decimal-place precision synced live to the user's Minimum Core Similarity slider.) Tj ET
+BT /F2 9.4 Tf 0.080 0.180 0.380 rg 46.0 579.0 Td (* Gate 3 -- Lipinski Rule of 5 / Oral Drug Size \(Threshold: 0 Violations\):) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 566.5 Td (Evaluates Lipinski's four oral bioavailability criteria: Molecular Weight <= 500.0 Da,) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 554.5 Td (Wildman-Crippen cLogP <= 5.0, H-Bond Donors \(HBD\) <= 5, and H-Bond Acceptors \(HBA\) <= 10.) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 542.5 Td (Requires 0 violations.) Tj ET
+BT /F2 9.4 Tf 0.080 0.180 0.380 rg 46.0 527.5 Td (* Gate 4 -- Topological Polar Surface Area / Cell Absorption \(Threshold: 40.0 A^2 <= TPSA <= 140.0 A^2\):) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 515.0 Td (Uses Ertl's fragment-based polar surface area algorithm. TPSA > 140 A^2 impairs passive) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 503.0 Td (gastrointestinal cell membrane permeation; TPSA < 40 A^2 correlates with excessive non-) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 491.0 Td (specific promiscuity and CNS/lipophilic toxicity.) Tj ET
+BT /F2 9.4 Tf 0.080 0.180 0.380 rg 46.0 476.0 Td (* Gate 5 -- ESOL Aqueous Solubility \(Threshold: LogS > -5.0 log mol/L\):) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 463.5 Td (Implements Delaney's \(2004\) ESOL regression: LogS = 0.16 - 0.63*cLogP - 0.0062*MW +) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 451.5 Td (0.066*RotatableBonds - 0.74*AromaticProportion. Compounds with LogS <= -5.0 precipitate in) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 439.5 Td (biochemical assays and exhibit erratic oral absorption.) Tj ET
+BT /F2 9.4 Tf 0.080 0.180 0.380 rg 46.0 424.5 Td (* Gate 6 -- hERG Cardiotoxicity Risk \(Threshold: Probability < 0.45\):) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 412.0 Td (Non-linear structural QSAR probability model p = 1 / \(1 + exp\(-z\)\) that penalizes the) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 400.0 Td (classic hERG pharmacophore: high lipophilicity \(cLogP\), poly-aromatic ring count, basic) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 388.0 Td (tertiary amines \(pKa > 8\), unmasked anilines, and aryl bromides, while rewarding polar) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 376.0 Td (surface area and ring nitrogen \(pyridine\) insertion.) Tj ET
+BT /F2 9.4 Tf 0.080 0.180 0.380 rg 46.0 361.0 Td (* Gate 7 -- Structural Alerts: PAINS & Brenk Filters \(Threshold: 0 Alerts\):) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 348.5 Td (Screens against RDKit's NIH FilterCatalog \(480 PAINS_A/B/C pan-assay interference patterns) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 336.5 Td (+ 105 Brenk reactive/mutagenic toxicophores\) plus explicit SMARTS patterns for mutagenic) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 324.5 Td (anilines, aromatic nitro groups, Michael acceptors, acyl halides, azo groups, and poly-) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 312.5 Td (bromo hepatotoxins.) Tj ET
+BT /F2 9.4 Tf 0.080 0.180 0.380 rg 46.0 297.5 Td (* Gate 8 -- Lab Synthesizability / Synthetic Accessibility \(Threshold: SAScore <= 4.0\):) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 285.0 Td (Evaluates Ertl & Schuffenhauer's Synthetic Accessibility Score \(1.0 = easy to 10.0 =) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 273.0 Td (intractable\), penalizing chiral centers, spiro atoms, bridgehead atoms, macrocycles) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 261.0 Td (\(>8-membered rings\), and heavy atom count.) Tj ET
+q 0.920 0.950 0.990 rg 40.0 234.0 532.0 20.0 re f Q
+q 0.150 0.390 0.920 rg 40.0 234.0 4.0 20.0 re f Q
+BT /F2 10.5 Tf 0.070 0.160 0.360 rg 50.0 240.0 Td (2.2 How We Prove Chemical Validity of Every Newly Generated Molecule) Tj ET
+BT /F1 9.3 Tf 0.150 0.190 0.260 rg 44.0 220.0 Td (A common question from judges is: 'How do you guarantee your newly generated lead is a real,) Tj ET
+BT /F1 9.3 Tf 0.150 0.190 0.260 rg 44.0 207.2 Td (chemically valid molecule?' Every molecule evaluated by our backend includes a dedicated) Tj ET
+BT /F1 9.3 Tf 0.150 0.190 0.260 rg 44.0 194.4 Td ('verification' block displayed in Column 3 of the UI:) Tj ET
+BT /F2 8.6 Tf 0.100 0.350 0.250 rg 46.0 179.1 Td (1. Valence & Radicals:) Tj ET
+BT /F3 8.0 Tf 0.120 0.160 0.220 rg 206.0 179.1 Td (RDKit Sanitize & Kekulize Passed \(0 valence errors, 0 radical electrons\)) Tj ET
+BT /F2 8.6 Tf 0.100 0.350 0.250 rg 46.0 166.3 Td (2. Stoichiometry:) Tj ET
+BT /F3 8.0 Tf 0.120 0.160 0.220 rg 206.0 166.3 Td (Exact Hill Molecular Formula + Monoisotopic ExactMolWt \(to 3 decimal places\)) Tj ET
+BT /F2 8.6 Tf 0.100 0.350 0.250 rg 46.0 153.5 Td (3. Standard InChIKey:) Tj ET
+BT /F3 8.0 Tf 0.120 0.160 0.220 rg 206.0 153.5 Td (27-character IUPAC cryptographic structure hash \(Chem.MolToInchiKey\)) Tj ET
+BT /F2 8.6 Tf 0.100 0.350 0.250 rg 46.0 140.7 Td (4. Self-Verification:) Tj ET
+BT /F3 8.0 Tf 0.120 0.160 0.220 rg 206.0 140.7 Td (One-click 'Verify as New Input' button re-runs the SMILES from scratch in Stage 1) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 8 0 R >>
+endobj
+10 0 obj
+<< /Length 6182 >>
+stream
+q 0.070 0.100 0.160 rg 40.0 742.0 532.0 34.0 re f Q
+BT /F2 8.5 Tf 0.220 0.740 0.970 rg 52.0 761.0 Td (AGENTVERSE 2026  |  BIOTECH HIT-TO-LEAD TECHNICAL EXPLANATION) Tj ET
+BT /F2 11.5 Tf 0.980 0.980 0.990 rg 52.0 749.0 Td (3. Ring-Preserving SMIRKS Engine, 10-Candidate Pool & Case Studies) Tj ET
+BT /F1 9.0 Tf 0.750 0.800 0.880 rg 505.0 755.0 Td (Page 3 of 4) Tj ET
+q 0.820 0.850 0.900 rg 40.0 32.0 532.0 1.0 re f Q
+BT /F1 8.0 Tf 0.420 0.460 0.520 rg 40.0 20.0 Td (Autonomous Hit-to-Lead Medicinal Chemistry Triage Agent  |  Gemini Argon + RDKit 8-Gate Clinical Screening) Tj ET
+q 0.920 0.950 0.990 rg 40.0 708.0 532.0 20.0 re f Q
+q 0.150 0.390 0.920 rg 40.0 708.0 4.0 20.0 re f Q
+BT /F2 10.5 Tf 0.070 0.160 0.360 rg 50.0 714.0 Td (3.1 Ring-Preserving [cD2] SMIRKS & Multi-Step Beam Search) Tj ET
+BT /F1 9.3 Tf 0.150 0.190 0.260 rg 44.0 694.0 Td (Instead of generating unconstrained text tokens, our reaction engine applies targeted RDKit) Tj ET
+BT /F1 9.3 Tf 0.150 0.190 0.260 rg 44.0 681.2 Td (ChemicalReaction SMIRKS transformations directly to the molecular graph. Critically, our) Tj ET
+BT /F1 9.3 Tf 0.150 0.190 0.260 rg 44.0 668.4 Td (aromatic C-H to pyridine N bioisostere transforms use explicit degree-2 aromatic carbon) Tj ET
+BT /F1 9.3 Tf 0.150 0.190 0.260 rg 44.0 655.6 Td (constraints \([cD2]\):) Tj ET
+BT /F2 8.6 Tf 0.100 0.350 0.250 rg 46.0 640.3 Td (Terminal Phenyl -> Pyridyl:) Tj ET
+BT /F3 8.0 Tf 0.120 0.160 0.220 rg 206.0 640.3 Td (c1\([*:1]\)[cD2][cD2][cD2][cD2][cD2]1>>c1\([*:1]\)cccnc1) Tj ET
+BT /F2 8.6 Tf 0.100 0.350 0.250 rg 46.0 627.5 Td (1,4-Phenylene -> Pyridyl:) Tj ET
+BT /F3 8.0 Tf 0.120 0.160 0.220 rg 206.0 627.5 Td (c1\([*:1]\)[cD2][cD2]c\([*:2]\)[cD2][cD2]1>>c1\([*:1]\)ccnc\([*:2]\)c1) Tj ET
+BT /F2 8.6 Tf 0.100 0.350 0.250 rg 46.0 614.7 Td (Alkyne Linker Reduction:) Tj ET
+BT /F3 8.0 Tf 0.120 0.160 0.220 rg 206.0 614.7 Td ([c:1]C#C[c:2]>>[c:1]CC[c:2]   \(Clears Brenk C#C triple-bond alert\)) Tj ET
+BT /F2 8.6 Tf 0.100 0.350 0.250 rg 46.0 601.9 Td (CF3-Phenyl -> Pyridyl:) Tj ET
+BT /F3 8.0 Tf 0.120 0.160 0.220 rg 206.0 601.9 Td (c1\([*:1]\)ccc\([*:2]\)c\(C\(F\)\(F\)F\)c1>>c1\([*:1]\)ccc\([*:2]\)nc1) Tj ET
+BT /F1 9.3 Tf 0.150 0.190 0.260 rg 44.0 589.1 Td (Why [cD2] matters: On complex trisubstituted rings like Ponatinib's central 1,2,4-aryl ring, a) Tj ET
+BT /F1 9.3 Tf 0.150 0.190 0.260 rg 44.0 576.3 Td (naive SMIRKS pattern without [cD2] matches the ring and deletes the 3rd substituent, losing 2) Tj ET
+BT /F1 9.3 Tf 0.150 0.190 0.260 rg 44.0 563.5 Td (core rings and failing Gate 2. Restricting matches to [cD2] \(unsubstituted aromatic CH) Tj ET
+BT /F1 9.3 Tf 0.150 0.190 0.260 rg 44.0 550.7 Td (carbons\) guarantees that existing ring substituents and the core scaffold topology are never) Tj ET
+BT /F1 9.3 Tf 0.150 0.190 0.260 rg 44.0 537.9 Td (lost.) Tj ET
+q 0.920 0.950 0.990 rg 40.0 510.6 532.0 20.0 re f Q
+q 0.150 0.390 0.920 rg 40.0 510.6 4.0 20.0 re f Q
+BT /F2 10.5 Tf 0.070 0.160 0.360 rg 50.0 516.6 Td (3.2 Generating & Displaying All 10 Evaluated Candidate Compounds) Tj ET
+BT /F1 9.3 Tf 0.150 0.190 0.260 rg 44.0 496.6 Td (When Max Optimization Cycles is set to N \(default 10\), build_evaluated_candidate_pool\(\)) Tj ET
+BT /F1 9.3 Tf 0.150 0.190 0.260 rg 44.0 483.8 Td (constructs and evaluates N=10 distinct, RDKit-sanitized candidate compounds across the primary) Tj ET
+BT /F1 9.3 Tf 0.150 0.190 0.260 rg 44.0 471.0 Td (reaction library and peripheral C-H substituent scans \(fluorination, hydroxylation,) Tj ET
+BT /F1 9.3 Tf 0.150 0.190 0.260 rg 44.0 458.2 Td (carboxamide, hydroxymethyl, nitrile\). All 10 candidate compounds are rendered in Column 2) Tj ET
+BT /F1 9.3 Tf 0.150 0.190 0.260 rg 44.0 445.4 Td (\('All 10 Evaluated Candidate Compounds'\) so the chemist or judge can click any of the 10) Tj ET
+BT /F1 9.3 Tf 0.150 0.190 0.260 rg 44.0 432.6 Td (analogs to inspect its 2D structure, 8-gate scorecard, and validity proof.) Tj ET
+q 0.920 0.950 0.990 rg 40.0 405.3 532.0 20.0 re f Q
+q 0.150 0.390 0.920 rg 40.0 405.3 4.0 20.0 re f Q
+BT /F2 10.5 Tf 0.070 0.160 0.360 rg 50.0 411.3 Td (3.3 Verified Multi-Drug Case Studies \(All Converge to 8/8 PASS\)) Tj ET
+BT /F2 9.4 Tf 0.080 0.180 0.380 rg 46.0 391.3 Td (* Ponatinib \(BCR-ABL Inhibitor, C29H27F3N6O, MW 532.6 Da\):) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 378.8 Td (Baseline passes 4/8 gates \(fails MW=533, LogS=-6.08, hERG=0.71, Brenk C#C alkyne alert\).) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 366.8 Td (The agent reduces the internal alkyne linker \(Step 1: 5/8 PASS\), tests and rejects a bulky) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 354.8 Td (nitro-phenyl extension \(Attempt 2: 2/8 FAIL -> automated backtrack\), and replaces the) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 342.8 Td (lipophilic -CF3 phenyl ring with a pyridyl bioisostere \(Step 3 Lead: 8/8 PASS, MW=468.6,) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 330.8 Td (LogS=-4.29, hERG=0.25, Tanimoto=0.656 >= 0.550\).) Tj ET
+BT /F2 9.4 Tf 0.080 0.180 0.380 rg 46.0 315.8 Td (* Imatinib \(BCR-ABL Inhibitor, MW 493.6 Da\) & Terfenadine \(Withdrawn Cardiotoxic Hit, MW 471.7 Da\):) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 303.3 Td (Imatinib free base starts at 7/8 PASS \(fails ESOL LogS=-5.19\) and converges to 8/8 PASS) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 291.3 Td (\(LogS=-4.79, hERG=0.20, Tanimoto=0.657\). Terfenadine starts at 6/8 PASS \(fails LogS=-6.49,) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 279.3 Td (hERG=0.65\) and converges via dipyridyl-methanol bioisostere replacement to 8/8 PASS) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 267.3 Td (\(LogS=-4.81, hERG=0.35, Tanimoto=0.697\).) Tj ET
+BT /F2 9.4 Tf 0.080 0.180 0.380 rg 46.0 252.3 Td (* Aspirin \(C9H8O4, 7/8 -> 8/8 PASS\) & Caffeine \(C8H10N4O2, Already 8/8 PASS\):) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 239.8 Td (Aspirin's hydrolytically labile phenol_ester alert \(Gate 7\) is stabilized to an aryl) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 227.8 Td (acetamide isostere \(8/8 PASS, Tanimoto=0.558\). Caffeine already passes all 8/8 checks on) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 215.8 Td (baseline and is preserved with 0 modifications.) Tj ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 10 0 R >>
+endobj
+12 0 obj
+<< /Length 5688 >>
+stream
+q 0.070 0.100 0.160 rg 40.0 742.0 532.0 34.0 re f Q
+BT /F2 8.5 Tf 0.220 0.740 0.970 rg 52.0 761.0 Td (AGENTVERSE 2026  |  BIOTECH HIT-TO-LEAD TECHNICAL EXPLANATION) Tj ET
+BT /F2 11.5 Tf 0.980 0.980 0.990 rg 52.0 749.0 Td (4. Judge Q&A Reference, Clinical Interlocks & Biosecurity Governance) Tj ET
+BT /F1 9.0 Tf 0.750 0.800 0.880 rg 505.0 755.0 Td (Page 4 of 4) Tj ET
+q 0.820 0.850 0.900 rg 40.0 32.0 532.0 1.0 re f Q
+BT /F1 8.0 Tf 0.420 0.460 0.520 rg 40.0 20.0 Td (Autonomous Hit-to-Lead Medicinal Chemistry Triage Agent  |  Gemini Argon + RDKit 8-Gate Clinical Screening) Tj ET
+q 0.920 0.950 0.990 rg 40.0 708.0 532.0 20.0 re f Q
+q 0.150 0.390 0.920 rg 40.0 708.0 4.0 20.0 re f Q
+BT /F2 10.5 Tf 0.070 0.160 0.360 rg 50.0 714.0 Td (4.1 Ready Answers for Technical & Medicinal Chemistry Judges) Tj ET
+BT /F2 9.4 Tf 0.080 0.180 0.380 rg 46.0 694.0 Td (* Q1: 'Why does Imatinib fail Gate 5 \(Solubility\) on baseline when it is an FDA-approved blockbuster drug?') Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 681.5 Td (Answer: Gate 5 \(Delaney ESOL\) computes the intrinsic aqueous solubility of the neutral) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 669.5 Td (free base \(LogS = -5.19\). In reality, neutral Imatinib free base is poorly soluble in) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 657.5 Td (water, which is specifically why Novartis formulated clinical Gleevec as the Imatinib) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 645.5 Td (Mesylate salt. Our agent identifies this exact free-base solubility liability and shows) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 633.5 Td (how a single pyridyl bioisostere swap brings the neutral scaffold into the soluble regime) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 621.5 Td (\(LogS = -4.79\).) Tj ET
+BT /F2 9.4 Tf 0.080 0.180 0.380 rg 46.0 606.5 Td (* Q2: 'Why did Gate 7 flag Ponatinib's alkyne \(C#C\) and Aspirin's phenol ester as structural alerts?') Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 594.0 Td (Answer: RDKit's standard Brenk filter catalog is deliberately conservative for early hit) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 582.0 Td (triage. It flags internal alkynes generically due to potential CYP450 reactive metabolite) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 570.0 Td (formation \(even though Ponatinib's rigid alkyne linker is an intentional design feature to) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 558.0 Td (bypass the T315I gatekeeper mutation\) and flags phenolic esters because they are covalent) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 546.0 Td (acylating agents \(which is Aspirin's exact covalent COX-1/COX-2 mechanism\).) Tj ET
+BT /F2 9.4 Tf 0.080 0.180 0.380 rg 46.0 531.0 Td (* Q3: 'What happens if the user sets the Tanimoto slider so high \(e.g. 0.80+\) that no 8/8 molecule exists?') Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 518.5 Td (Answer: The agent never fakes a pass or approves a failing molecule. It evaluates all Max) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 506.5 Td (Optimization Cycles \(10 candidates\), terminates honestly with 'Could not reach 8/8 -- best) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 494.5 Td (candidate X/8, failing: [Gates] \(Export Locked\)', does not auto-open the sign-off modal,) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 482.5 Td (disables the Approve & Export button, and rejects POST /api/signoff-export with HTTP 400) Tj ET
+BT /F1 9.1 Tf 0.160 0.200 0.280 rg 58.0 470.5 Td (\('Clinical Gate Interlock: Candidate passed X/8 checks'\).) Tj ET
+q 0.920 0.950 0.990 rg 40.0 443.5 532.0 20.0 re f Q
+q 0.150 0.390 0.920 rg 40.0 443.5 4.0 20.0 re f Q
+BT /F2 10.5 Tf 0.070 0.160 0.360 rg 50.0 449.5 Td (4.2 Named Risks & Technical Mitigations Summary) Tj ET
+BT /F2 8.6 Tf 0.100 0.350 0.250 rg 46.0 429.5 Td (Risk 1 -- False Lead Approval:) Tj ET
+BT /F3 8.0 Tf 0.120 0.160 0.220 rg 206.0 429.5 Td (Mitigated by Dual UI + Backend HTTP 400 Clinical Gate Interlock \(<8/8 blocked\)) Tj ET
+BT /F2 8.6 Tf 0.100 0.350 0.250 rg 46.0 416.7 Td (Risk 2 -- Threshold Rounding Bug:) Tj ET
+BT /F3 8.0 Tf 0.120 0.160 0.220 rg 206.0 416.7 Td (Mitigated by 3-decimal-place Tanimoto display & comparison synced to slider) Tj ET
+BT /F2 8.6 Tf 0.100 0.350 0.250 rg 46.0 403.9 Td (Risk 3 -- Core Ring Deletion:) Tj ET
+BT /F3 8.0 Tf 0.120 0.160 0.220 rg 206.0 403.9 Td (Mitigated by [cD2] SMIRKS + Murcko ring-count check \(Core Ring Lost flag\)) Tj ET
+BT /F2 8.6 Tf 0.100 0.350 0.250 rg 46.0 391.1 Td (Risk 4 -- Dual-Use Toxin Design:) Tj ET
+BT /F3 8.0 Tf 0.120 0.160 0.220 rg 206.0 391.1 Td (Mitigated by deterministic SMARTS biosecurity filter prior to JSON handoff) Tj ET
+BT /F2 8.6 Tf 0.100 0.350 0.250 rg 46.0 378.3 Td (Risk 5 -- Unaccountable AI SignOff:) Tj ET
+BT /F3 8.0 Tf 0.120 0.160 0.220 rg 206.0 378.3 Td (Mitigated by mandatory human chemist checkbox + >=5-char justification notes) Tj ET
+q 0.920 0.950 0.990 rg 40.0 353.5 532.0 20.0 re f Q
+q 0.150 0.390 0.920 rg 40.0 353.5 4.0 20.0 re f Q
+BT /F2 10.5 Tf 0.070 0.160 0.360 rg 50.0 359.5 Td (4.3 Verification & How to Run) Tj ET
+BT /F2 8.6 Tf 0.100 0.350 0.250 rg 46.0 339.5 Td (Run End-to-End Pytest Suite:) Tj ET
+BT /F3 8.0 Tf 0.120 0.160 0.220 rg 206.0 339.5 Td (.\\.venv\\Scripts\\python.exe -m pytest -v test_end_to_end.py   \(6/6 PASS\)) Tj ET
+BT /F2 8.6 Tf 0.100 0.350 0.250 rg 46.0 326.7 Td (Run 25-Scaffold Benchmark:) Tj ET
+BT /F3 8.0 Tf 0.120 0.160 0.220 rg 206.0 326.7 Td (.\\.venv\\Scripts\\python.exe evaluate_benchmark.py) Tj ET
+BT /F2 8.6 Tf 0.100 0.350 0.250 rg 46.0 313.9 Td (Start Live Web Application:) Tj ET
+BT /F3 8.0 Tf 0.120 0.160 0.220 rg 206.0 313.9 Td (.\\.venv\\Scripts\\python.exe -m uvicorn app:app --host 127.0.0.1 --port 8000) Tj ET
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 12 0 R >>
+endobj
+xref
+0 14
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000141 00000 n 
+0000000238 00000 n 
+0000000340 00000 n 
+0000000435 00000 n 
+0000007362 00000 n 
+0000007508 00000 n 
+0000014585 00000 n 
+0000014731 00000 n 
+0000020966 00000 n 
+0000021114 00000 n 
+0000026855 00000 n 
+trailer
+<< /Size 14 /Root 1 0 R >>
+startxref
+27003
+%%EOF

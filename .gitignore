@@ -1,0 +1,29 @@
+# Python virtual environments & caches
+.venv/
+venv/
+ENV/
+prototypes/.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Environment variables & secrets (Never commit to public repository)
+.env
+.env.*
+*.pem
+*.key
+*.secret
+
+# OS & IDE files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.claude/
+
+# Node / legacy artifacts
+node_modules/
+.next/
