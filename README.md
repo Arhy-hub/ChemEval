@@ -14,16 +14,24 @@ An end-to-end **Autonomous Design-Build-Test-Learn (DBTL) Medicinal Chemistry Tr
 
 ---
 
-## Quick Start
+## Quick Start (Windows, macOS & Linux)
 
+**Zero API keys or GPU required** — runs 100% locally on CPU (online or offline).
+
+### Windows (PowerShell)
 ```powershell
-# 1. Create / activate virtual environment and install dependencies
 python -m venv .venv
 .\.venv\Scripts\activate
 pip install -r requirements.txt
+python -m uvicorn app:app --host 127.0.0.1 --port 8000 --reload
+```
 
-# 2. Launch the FastAPI + Interactive 3-Column Web Application
-.\.venv\Scripts\python.exe -m uvicorn app:app --host 127.0.0.1 --port 8000 --reload
+### macOS / Linux (Bash / Zsh)
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python3 -m uvicorn app:app --host 127.0.0.1 --port 8000 --reload
 ```
 
 Open **http://127.0.0.1:8000** in your browser.

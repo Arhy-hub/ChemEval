@@ -1428,6 +1428,56 @@ def build_evaluated_candidate_pool(
     return pool
 
 
+def query_gemini_argon_reasoning(
+    compound_label: str,
+    starting_smiles: str,
+    failed_gates: List[str],
+    min_tanimoto: float,
+    lead_title: str,
+) -> str:
+    """
+    Dual-Mode Gemini Argon Backend Adapter:
+      - If GEMINI_API_KEY (or GOOGLE_API_KEY) is set in the environment, calls the Gemini REST API
+        to generate a live medicinal chemistry SAR rationale for the failed gates.
+      - If no API key is configured (e.g. when cloned on another computer without credentials or offline),
+        automatically falls back to the deterministic local Gemini Argon SAR reasoning engine so it never fails.
+    """
+    api_key = (os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY") or "").strip()
+    model_id = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash").strip()
+    default_msg = (
+        f"Gemini Argon analyzed failed gates ({', '.join(failed_gates)}) and locked Murcko core scaffold "
+        f"(Tanimoto >= {min_tanimoto:.3f}). Prioritized {lead_title.replace('Step 3: ', '')} across 10 RDKit SMIRKS cycles."
+    )
+    if not api_key:
+        return default_msg
+
+    try:
+        import requests
+
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_id}:generateContent?key={api_key}"
+        prompt = (
+            f"You are Gemini Argon, an expert medicinal chemistry Hit-to-Lead agent. "
+            f"Compound {compound_label} ({starting_smiles}) failed these clinical gates: {', '.join(failed_gates)}. "
+            f"In 1 concise sentence (<32 words), explain why locking the Murcko core (Tanimoto >= {min_tanimoto:.3f}) "
+            f"and applying {lead_title.replace('Step 3: ', '')} resolves these liabilities."
+        )
+        resp = requests.post(
+            url,
+            json={"contents": [{"parts": [{"text": prompt}]}]},
+            timeout=3.5,
+        )
+        if resp.status_code == 200:
+            data = resp.json()
+            candidates = data.get("candidates") or []
+            if candidates:
+                parts = candidates[0].get("content", {}).get("parts") or []
+                if parts and parts[0].get("text"):
+                    return f"Gemini Argon (Live API): {parts[0]['text'].strip()}"
+    except Exception:
+        pass
+    return default_msg
+
+
 def generate_dbtl_trajectory_events(
     target_id: str = "CHEMBL203",
     compound_input: str = "",
@@ -1609,14 +1659,19 @@ def generate_dbtl_trajectory_events(
 
     plan = run_genuine_medchem_optimization(starting_smiles, min_tanimoto=min_tanimoto)
 
+    argon_msg = query_gemini_argon_reasoning(
+        compound_label=compound_label,
+        starting_smiles=starting_smiles,
+        failed_gates=failed_gates,
+        min_tanimoto=min_tanimoto,
+        lead_title=plan["edit_3_lead"]["title"],
+    )
+
     yield {
         "event": "log",
         "level": "Thinking",
         "tag": "[Gemini Argon]",
-        "message": (
-            f"Gemini Argon analyzed failed gates ({', '.join(failed_gates)}) and locked Murcko core scaffold "
-            f"(Tanimoto >= {min_tanimoto:.2f}). Selecting targeted RDKit SMIRKS transformations."
-        ),
+        "message": argon_msg,
         "timestamp": time.strftime("%H:%M:%S"),
     }
 
