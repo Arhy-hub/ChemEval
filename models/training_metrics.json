@@ -1,0 +1,61 @@
+{
+  "model_name": "MedChemPolicyNet-v2.5 (SFT + RL-GRPO)",
+  "architecture": "2064-dim MorganFP+ADMET -> 256 -> 128 -> 17 SMIRKS Policy + Value Head",
+  "training_scaffolds": 53,
+  "unique_murcko_scaffolds": 24,
+  "total_mmp_reaction_pairs": 222,
+  "sft_epochs": 90,
+  "grpo_epochs": 50,
+  "training_time_sec": 3.63,
+  "untrained_top1_accuracy_pct": 5.7,
+  "post_sft_top1_accuracy_pct": 88.7,
+  "post_grpo_top1_accuracy_pct": 88.7,
+  "scaffold_split_test_accuracy_pct": 27.3,
+  "eight_gate_convergence_rate_pct": 90.6,
+  "training_history": [
+    {
+      "stage": "SFT",
+      "epoch": 1,
+      "loss": 21.6247,
+      "top1_accuracy_pct": 20.8
+    },
+    {
+      "stage": "SFT",
+      "epoch": 10,
+      "loss": 3.6328,
+      "top1_accuracy_pct": 50.9
+    },
+    {
+      "stage": "SFT",
+      "epoch": 20,
+      "loss": 2.3271,
+      "top1_accuracy_pct": 71.7
+    },
+    {
+      "stage": "SFT",
+      "epoch": 90,
+      "loss": 1.6769,
+      "top1_accuracy_pct": 88.7
+    },
+    {
+      "stage": "RL-GRPO",
+      "epoch": 1,
+      "mean_oracle_reward": 5.192,
+      "top1_accuracy_pct": 88.7
+    },
+    {
+      "stage": "RL-GRPO",
+      "epoch": 10,
+      "mean_oracle_reward": 5.288,
+      "top1_accuracy_pct": 88.7
+    },
+    {
+      "stage": "RL-GRPO",
+      "epoch": 50,
+      "mean_oracle_reward": 5.52,
+      "top1_accuracy_pct": 88.7
+    }
+  ],
+  "weights_path": "models\\medchem_policy_weights.npz",
+  "dataset_path": "data\\chembl_mmp_training_pairs.jsonl"
+}
