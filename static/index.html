@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hit-to-Lead Medicinal Chemistry Triage</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-left">
+      <h1>Hit-to-Lead Medicinal Chemistry Triage</h1>
+      <span class="subtitle">Gemini Argon Reasoning Agent &amp; RDKit 8-Gate Clinical Screening</span>
+    </div>
+    <div class="topbar-right">
+      <span class="status-pill" id="pipelineStatusText">Ready</span>
+      <button class="btn-dossier" id="btnOpenDossierModal" disabled>
+        Review &amp; Export Dossier
+      </button>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <!-- =================================================================== -->
+    <!-- COLUMN 1: INPUT & CONFIGURATION                                     -->
+    <!-- =================================================================== -->
+    <aside class="panel">
+      <div class="panel-header">
+        <h2>1. Input &amp; Configuration</h2>
+      </div>
+
+      <div class="panel-body">
+        <!-- Starting Molecule Input -->
+        <div class="field">
+          <label for="compoundInput">Compound (Drug Name, ChEMBL ID, or SMILES)</label>
+          <textarea
+            id="compoundInput"
+            rows="3"
+            placeholder="Enter any drug name (e.g. Ponatinib, Terfenadine, Caffeine) or paste a SMILES string..."
+          >COc1cc2ncnc(Nc3ccc(N)c(Br)c3)c2cc1OCCN4CCOCC4</textarea>
+
+          <!-- Instant Diagnosis Summary -->
+          <div class="diagnosis-card warn" id="diagnosisCard">
+            <div class="diag-title" id="recTitleText">Evaluating compound...</div>
+            <div class="diag-desc" id="recSubText"></div>
+          </div>
+        </div>
+
+        <!-- Optional Disease / Target -->
+        <div class="field">
+          <label for="targetSelector">Disease / Protein Target (Optional)</label>
+          <div class="input-with-btn">
+            <input
+              type="text"
+              id="targetSelector"
+              list="chemblTargetsList"
+              value="Lung Cancer (EGFR)"
+              placeholder="e.g. Lung Cancer, Alzheimer's, or leave blank"
+            />
+            <button type="button" class="btn-small" id="btnFetchTarget" title="Load default hit compound for this target">
+              Load Hit
+            </button>
+          </div>
+          <datalist id="chemblTargetsList">
+            <option value="Any / None">No Specific Target</option>
+            <option value="Lung Cancer (EGFR)">Lung Cancer (EGFR)</option>
+            <option value="Alzheimer's (BACE1)">Alzheimer's Disease (BACE1)</option>
+            <option value="Myelofibrosis (JAK2)">Myelofibrosis (JAK2)</option>
+            <option value="Leukemia (BCR-ABL)">Chronic Myeloid Leukemia (BCR-ABL)</option>
+            <option value="COVID-19 (Mpro)">COVID-19 Antiviral (Mpro)</option>
+          </datalist>
+          <div class="target-caption" id="targetCaptionText">
+            Target context is optional; any drug name or SMILES can be evaluated directly.
+          </div>
+        </div>
+
+        <!-- Parameters -->
+        <div class="field">
+          <div class="slider-label-row">
+            <label for="sliderTanimoto">Minimum Core Similarity (Tanimoto)</label>
+            <span class="slider-val" id="valTanimoto">0.55</span>
+          </div>
+          <input type="range" id="sliderTanimoto" min="0.30" max="0.80" step="0.05" value="0.55" />
+        </div>
+
+        <div class="field">
+          <div class="slider-label-row">
+            <label for="sliderMaxDepth">Max Optimization Cycles</label>
+            <span class="slider-val" id="valMaxDepth">10</span>
+          </div>
+          <input type="range" id="sliderMaxDepth" min="3" max="20" step="1" value="10" />
+        </div>
+
+        <!-- Primary Action Button -->
+        <button type="button" class="btn-run" id="btnRunTriage">
+          Run Optimization
+        </button>
+      </div>
+    </aside>
+
+    <!-- =================================================================== -->
+    <!-- COLUMN 2: OPTIMIZATION TRAJECTORY                                   -->
+    <!-- =================================================================== -->
+    <section class="panel panel-center">
+      <div class="panel-header">
+        <h2>2. Optimization Path</h2>
+        <span class="hint-text">Select any step to inspect its 8 clinical checks</span>
+      </div>
+
+      <div class="steps-scroll" id="treeFlowContainer">
+        <!-- Populated with step cards -->
+      </div>
+
+      <div class="console-box">
+        <div class="console-header">
+          <span>Execution Log</span>
+          <span id="consoleCycleCounter">Idle</span>
+        </div>
+        <div class="console-stream" id="thoughtConsoleBody"></div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- COLUMN 3: 8 CLINICAL SAFETY CHECKS                                  -->
+    <!-- =================================================================== -->
+    <aside class="panel">
+      <div class="panel-header">
+        <h2>3. Clinical Safety Checks</h2>
+        <span class="score-pill" id="gatesScoreSummaryPill">6 / 8 PASS</span>
+      </div>
+
+      <div class="panel-body">
+        <div class="selected-step-banner">
+          <span id="inspectedNodeTitle">Starting Compound</span>
+          <span class="node-tag" id="inspectedNodeBadge">BASELINE</span>
+        </div>
+
+        <div class="checks-list" id="clinicalGatesList">
+          <!-- 8 check rows -->
+        </div>
+
+        <div class="validity-proof-box" id="moleculeValidityProofBox">
+          <!-- Populated dynamically with Formula, Exact MW, InChIKey, Valence Check, Copy SMILES, Verify as Input, PubChem -->
+        </div>
+
+        <div class="color-legend">
+          <span><b class="c-blue">Blue:</b> Core Scaffold</span>
+          <span><b class="c-green">Green:</b> Modified Group</span>
+          <span><b class="c-red">Red:</b> Toxic Alert</span>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <!-- ===================================================================== -->
+  <!-- STEP 4: BIOSECURITY & HUMAN SIGN-OFF MODAL                            -->
+  <!-- ===================================================================== -->
+  <div class="modal-overlay hidden" id="biosecurityModalBackdrop">
+    <div class="modal-card" role="dialog" aria-labelledby="modalTitle">
+      <div class="modal-header">
+        <h2 id="modalTitle">Biosecurity Review &amp; Lead Handoff</h2>
+        <button type="button" class="btn-close" id="btnCloseModalTop">Close</button>
+      </div>
+
+      <div class="dual-structures">
+        <div class="structure-panel">
+          <div class="structure-title">Starting Input Compound</div>
+          <div class="structure-sub" id="modalStartLabel"></div>
+          <div class="structure-svg" id="modalStartSvgStage"></div>
+          <div class="structure-caption" id="modalStartMetricsStrip"></div>
+        </div>
+
+        <div class="structure-panel optimized">
+          <div class="structure-title">Final Output Compound</div>
+          <div class="structure-sub" id="modalLeadLabel"></div>
+          <div class="structure-svg" id="modalLeadSvgStage"></div>
+          <div class="structure-caption" id="modalLeadMetricsStrip"></div>
+        </div>
+      </div>
+
+      <div class="biosecurity-box">
+        <div class="biosecurity-headline">
+          BIOSECURITY STATUS: <span id="modalBiosecStatusText">CLEAN</span>
+        </div>
+        <div class="biosecurity-sub" id="modalBiosecDeclarationText">
+          Dual-use toxin SMARTS filter: 0 matches found against restricted lists.
+        </div>
+      </div>
+
+      <div class="signoff-box">
+        <div class="signoff-title">Medicinal Chemist Sign-Off</div>
+
+        <label class="certify-check" for="chkChemistCertify">
+          <input type="checkbox" id="chkChemistCertify" />
+          <span>
+            I certify that I have reviewed the structural modifications, scaffold similarity, and clinical safety profile of this compound.
+          </span>
+        </label>
+
+        <div class="notes-field">
+          <label for="inputReviewerNotes">Reviewer Notes</label>
+          <input
+            type="text"
+            id="inputReviewerNotes"
+            placeholder="Enter brief review justification..."
+          />
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn-reject" id="btnRejectStream">
+            Discard
+          </button>
+          <button type="button" class="btn-approve" id="btnApproveExport" disabled>
+            Approve &amp; Export JSON
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast hidden" id="toastBanner"></div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
